@@ -35,6 +35,7 @@ const App = () => {
       {/* If showUserLogin is true, the Login component is displayed */}
      {showUserLogin ? <Login/> : null}
 
+      {/* using this so that we can popup messages in the app */}
      <Toaster />
 
       {/* The main content of the application is wrapped in a div with padding */}
