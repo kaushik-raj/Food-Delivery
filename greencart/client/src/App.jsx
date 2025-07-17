@@ -27,11 +27,20 @@ const App = () => {
   return (
     <div className='text-default min-h-screen text-gray-700 bg-white'>
 
+    {/*  Navbar is conditionally rendered based on the current path
+        If the path includes "seller", the Navbar is not displayed */}
      {isSellerPath ? null : <Navbar/>} 
+
+      {/* Login modal is conditionally rendered based on the showUserLogin state */}
+      {/* If showUserLogin is true, the Login component is displayed */}
      {showUserLogin ? <Login/> : null}
 
      <Toaster />
 
+      {/* The main content of the application is wrapped in a div with padding */}
+      {/* The padding is adjusted based on whether the current path is a seller path */}
+      {/* If it is a seller path, no padding is applied */}
+      {/* If it is not a seller path, padding is applied to the left and right sides */}
       <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
         <Routes>
           <Route path='/' element={<Home/>} />
@@ -49,7 +58,8 @@ const App = () => {
           </Route>
         </Routes>
       </div>
-     {!isSellerPath && <Footer/>}
+      {/* Footer is conditionally rendered based on the current path */}
+      {!isSellerPath && <Footer/>}
     </div>
   )
 }

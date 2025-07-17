@@ -4,6 +4,8 @@ import { useAppContext } from "../context/AppContext";
 
 
 const ProductCard = ({product}) => {
+    // useAppContext is a custom hook that provides access to the AppContext
+    // It allows us to access the currency, addToCart, removeFromCart, cart
     const {currency, addToCart, removeFromCart, cartItems, navigate} = useAppContext()
 
    
