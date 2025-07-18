@@ -29,7 +29,8 @@ const Navbar = () => {
       }
         
     }
-
+    // useEffect hook to navigate to the products page when the searchQuery changes
+    // This is useful for redirecting the user to the products page when they search for a product .
     useEffect(()=>{
       if(searchQuery.length > 0){
         navigate("/products")
@@ -58,6 +59,7 @@ const Navbar = () => {
         </div>
 
         {/* Cart Icon */}
+        
         <div onClick={()=> navigate("/cart")} className="relative cursor-pointer">
           <img src={assets.nav_cart_icon} alt='cart' className='w-6 opacity-80'/>
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getCartCount()}</button>

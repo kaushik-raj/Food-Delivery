@@ -16,7 +16,6 @@ const BestSeller = () => {
 
         {/* This maps through the products array and renders a ProductCard for each product
             It filters the products to only include those that are in stock */}
-        
         {products.filter((product)=> product.inStock).slice(0,5).map((product, index)=>(
             <ProductCard key={index} product={product}/>
         ))}

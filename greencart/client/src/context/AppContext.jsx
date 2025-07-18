@@ -119,15 +119,20 @@ export const AppContextProvider = ({children})=>{
     }
 
     // Get total Count of Cart Items
+    // Here we didn't use any useState to store the total count of cart items , bcz when the cartItems changes, we can directly calculate the total count from the cartItems object
+    // This function is also called at the time of rendering the cartItems useState variable.
     const getCartCount = ()=>{
         let totalCount = 0;
         for(const item in cartItems){
+            // We are using cartItems[item] to get the quantity of each item in the cart
             totalCount += cartItems[item];
         }
         return totalCount;
     }
 
     // Get Cart Total Amount
+    // Here we still didn't use any useState to store the total amount of cart items, bcz when the cartItems changes, we can directly calculate the total amount from the cartItems object
+    // This function is also called at the time of rendering the cartItems useState variable.
     const getCartAmount = () =>{
         let totalAmount = 0;
         for (const items in cartItems){

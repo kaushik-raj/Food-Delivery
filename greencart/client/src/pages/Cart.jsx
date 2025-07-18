@@ -5,12 +5,30 @@ import toast from "react-hot-toast";
 
 const Cart = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount, axios, user, setCartItems} = useAppContext()
+    
+    // cartArray will hold the products in the cart with their quantities
+    // It is initialized as an empty array and will be populated with the products from the cart
     const [cartArray, setCartArray] = useState([])
+
+    // addresses will hold the user's saved addresses
+    // It is initialized as an empty array and will be populated with the addresses fetched from the server
     const [addresses, setAddresses] = useState([])
+    // showAddress is a boolean state to control the visibility of the address selection dropdown
+    // It is initialized as false, meaning the dropdown is hidden by default
     const [showAddress, setShowAddress] = useState(false)
+    // selectedAddress will hold the address selected by the user for this order
+    // It is initialized as null and will be set to the first address from the fetched addresses
+    // This allows the user to select an address for delivery
     const [selectedAddress, setSelectedAddress] = useState(null)
+    // paymentOption is a state to manage the selected payment method
+    // It is initialized to "COD" (Cash on Delivery) and can be changed to "Online" for online payments
     const [paymentOption, setPaymentOption] = useState("COD")
 
+    // getCart function will populate the cartArray with products from the cartItems state
+    // It iterates over the cartItems object, finds the corresponding product in the products array
+    // Product is an object that contains details like id, name, price, etc.
+    // Product object is pushed into a temporary array with its quantity
+    // That temporary array is then set to the cartArray state
     const getCart = ()=>{
         let tempArray = []
         for(const key in cartItems){
@@ -21,6 +39,8 @@ const Cart = () => {
         setCartArray(tempArray)
     }
 
+    // getUserAddress function fetches the user's saved addresses from the server
+    // It sends a GET request to the server and updates the addresses state with the fetched addresses
     const getUserAddress = async ()=>{
         try {
             const {data} = await axios.get('/api/address/get');
@@ -38,6 +58,8 @@ const Cart = () => {
         }
     }
 
+    // placeOrder function will handle the order placement
+    // It checks if an address is selected, then sends a request to the server to place the order
     const placeOrder = async ()=>{
         try {
             if(!selectedAddress){
@@ -77,6 +99,7 @@ const Cart = () => {
             toast.error(error.message)
         }
     }
+
 
     useEffect(()=>{
         if(products.length > 0 && cartItems){
