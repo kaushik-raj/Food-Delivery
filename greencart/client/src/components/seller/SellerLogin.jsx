@@ -3,7 +3,12 @@ import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast';
 
 const SellerLogin = () => {
+
+    
     const {isSeller, setIsSeller, navigate, axios} = useAppContext()
+
+    // State to hold email and password for login
+    // These will be used to send login request to the server
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -23,6 +28,8 @@ const SellerLogin = () => {
         
     }
 
+    // If the user is already a seller, redirect to the seller page
+    // This is to prevent the seller from accessing the login page again
     useEffect(()=>{
         if(isSeller){
             navigate("/seller")

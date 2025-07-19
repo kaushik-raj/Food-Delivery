@@ -53,6 +53,7 @@ const App = () => {
           <Route path='/add-address' element={<AddAddress/>} />
           <Route path='/my-orders' element={<MyOrders/>} />
           <Route path='/loader' element={<Loading/>} />
+          {/* If the user is a seller then it will be redirected to the sellers page , else to the sellerLogin page */}
           <Route path='/seller' element={isSeller ? <SellerLayout/> : <SellerLogin/>}>
             <Route index element={isSeller ? <AddProduct/> : null} />
             <Route path='product-list' element={<ProductList/>} />

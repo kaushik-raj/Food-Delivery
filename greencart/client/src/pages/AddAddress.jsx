@@ -39,7 +39,7 @@ const AddAddress = () => {
     })
 
     // Function to handle changes in the input fields
-    // It updates the address state with the new value entered by the user in each field input .
+    // It updates the address object state with the new value entered by the user in each field input .
     const handleChange = (e)=>{
         const { name, value } = e.target;
 
@@ -87,7 +87,7 @@ const AddAddress = () => {
 
                 {/* Here we rendered the input componenet for different fileds of input in the form */}
                 <div className='grid grid-cols-2 gap-4'>
-                    {/* in the inputField we are passing the whole address state variable , so that while address variable is changes in the on typing input in it . */}
+                    {/* in the inputField we are passing the whole address object state variable , so that while address variable is changes in the on typing input in it . */}
                     <InputField handleChange={handleChange} address={address} name='firstName' type="text" placeholder="First Name"/>
                     <InputField handleChange={handleChange} address={address} name='lastName' type="text" placeholder="Last Name"/>
                 </div>

@@ -16,6 +16,7 @@ export const AppContextProvider = ({children})=>{
     // State to manage user authentication, seller status, login modal visibility, products, and cart items
     const [user, setUser] = useState(null)
     // State to manage seller status
+    // This is used to check if the user is a seller or not
     const [isSeller, setIsSeller] = useState(false)
     // State to manage visibility of the user login modal
     const [showUserLogin, setShowUserLogin] = useState(false)

@@ -7,13 +7,16 @@ const SellerLayout = () => {
 
     const { axios, navigate } = useAppContext();
 
-
+    // Arrat of sidebar links for the seller dashboard
+    // Each link has a name, path, and icon
     const sidebarLinks = [
         { name: "Add Product", path: "/seller", icon: assets.add_icon },
         { name: "Product List", path: "/seller/product-list", icon: assets.product_list_icon },
         { name: "Orders", path: "/seller/orders", icon: assets.order_icon },
     ];
 
+    // Function to log out the seller
+    // It sends a request to the server to log out and updates the UI accordingly
     const logout = async ()=>{
         try {
             const { data } = await axios.get('/api/seller/logout');
@@ -30,6 +33,8 @@ const SellerLayout = () => {
 
     return (
         <>
+            {/* Header section with logo and logout button */}
+            {/* Displayed in each seller page */}
             <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white">
                 <Link to='/'>
                     <img src={assets.logo} alt="log" className="cursor-pointer w-34 md:w-38" />
@@ -39,8 +44,16 @@ const SellerLayout = () => {
                     <button onClick={logout} className='border rounded-full text-sm px-4 py-1'>Logout</button>
                 </div>
             </div>
+
+            {/* Sidebar and Outlet for child components */}
+            {/* Outlet will render the child components based on the route */}
+            {/* Displayed in each seller page*/}
             <div className="flex">
                <div className="md:w-64 w-16 border-r h-[95vh] text-base border-gray-300 pt-4 flex flex-col">
+
+                {/* Sidebar links */}
+                {/* It maps through the sidebarLinks array and renders a NavLink for each link */}
+                {/* Using end , bcz this will /seller is the part of all the routes , soo to give an exact match , e */}
                 {sidebarLinks.map((item) => (
                     <NavLink to={item.path} key={item.name} end={item.path === "/seller"}
                         className={({isActive})=>`flex items-center py-3 px-4 gap-3 
@@ -53,7 +66,9 @@ const SellerLayout = () => {
                         <p className="md:block hidden text-center">{item.name}</p>
                     </NavLink>
                 ))}
+
             </div> 
+                {/* outlet will render the child components */}
                 <Outlet/>
             </div>
              

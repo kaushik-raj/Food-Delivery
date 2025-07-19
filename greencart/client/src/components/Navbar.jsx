@@ -51,6 +51,7 @@ const Navbar = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/products'>All Product</NavLink>
         <NavLink to='/'>Contact</NavLink>
+        <NavLink to='/seller'>Seller</NavLink>
 
         {/* Search bar */}
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
@@ -64,6 +65,8 @@ const Navbar = () => {
           <img src={assets.nav_cart_icon} alt='cart' className='w-6 opacity-80'/>
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getCartCount()}</button>
         </div>
+
+        
 
         {/* User Profile */}
         {/*  Conditional rendering based on user login status of profile page and drop down menu*/}
